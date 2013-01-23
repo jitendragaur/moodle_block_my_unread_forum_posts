@@ -1,0 +1,17 @@
+.block_my_unread_forum_posts .unread {
+    margin-left: 3em !important;
+    background: #FFEB80 !important;    
+    padding:2px !important;
+}
+.block_my_unread_forum_posts .unread a:hover {    
+    text-decoration: none !important;
+}
+.block_my_unread_forum_posts hr {
+    background-color:#CCC;
+    border-width:0;
+    color:#444;
+    height:1px;
+    line-height:0;    
+    page-break-after:always;
+    text-align:center;    
+}

@@ -79,9 +79,13 @@ class block_my_unread_forum_posts extends block_base {
                     if ($cm = get_coursemodule_from_instance('forum', $forum->id, $course->id)) {
 
                         $viewforumurl = new moodle_url('/mod/forum/view.php', array('id' => $cm->id));
+                        $viewcourseurl = new moodle_url('/course/view.php', array('id' => $course->id));
+                        $output = '<div style="overflow:hidden;height:auto;"><div>';
                         $icon = '<img src="' . $OUTPUT->pix_url('icon', 'forum') .
                                 '" class="icon" alt="" />&nbsp;';
-                        $viewposturl = html_writer::link($viewforumurl, $icon . shorten_text($cm->name, $this->config->forumnamelength));
+                        $output .= html_writer::link($viewcourseurl, $icon . $course->fullname);
+                        //add course separator
+                        $output .= ' ' . $this->config->coursenameseparator . ' ';
 
                         if ($forum->unread == 1) {
                             $formcount = get_string('unreadforumpostsone'
@@ -90,8 +94,10 @@ class block_my_unread_forum_posts extends block_base {
                             $formcount = get_string('unreadforumpostsnumber'
                                     , 'block_my_unread_forum_posts', $forum->unread);
                         }
-                        $viewposturl .= ' <span class="unread">&nbsp;' . html_writer::link($viewforumurl, $formcount) . '&nbsp;</span>';
-                        $forumlist[] = $viewposturl;
+                        $output .= html_writer::link($viewforumurl, shorten_text($cm->name, $this->config->forumnamelength)) . '</div>';
+                        $output .= ' <div style="text-align:right;"><span class="unread">&nbsp;' . html_writer::link($viewforumurl, $formcount) . '&nbsp;</span></div>';
+                        $output .= '<hr/></div>';
+                        $forumlist[] = $output;
 
                         $counter++;
 

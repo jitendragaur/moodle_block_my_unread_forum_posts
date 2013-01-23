@@ -31,4 +31,5 @@ $string['configtitle'] = 'Title';
 $string['unreadforumpostsnumber'] = '{$a} unread posts';
 $string['unreadforumpostsone'] = '1 unread post';
 $string['forumnamelength'] = 'Forum name length';
+$string['coursenameseparator'] = 'Course name separator';
 

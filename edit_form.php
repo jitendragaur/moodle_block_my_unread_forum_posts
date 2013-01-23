@@ -23,28 +23,36 @@
  * @copyright 2013 Jitendra Gaur
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-
 class block_my_unread_forum_posts_edit_form extends block_edit_form {
-    
+
     protected function specific_definition($mform) {
-                
+
         $mform->addElement('header', 'configheader', get_string('blocksettings', 'block'));
 
         $mform->addElement('text', 'config_title', get_string('configtitle', 'block_my_unread_forum_posts'));
         $mform->setType('config_title', PARAM_MULTILANG);
-        $mform->setDefault('config_title', get_string('pluginname', 'block_my_unread_forum_posts'));        
-        
+        $mform->setDefault('config_title', get_string('pluginname', 'block_my_unread_forum_posts'));
+
         $numberofforums = array();
         for ($i = 1; $i <= 30; $i++) {
             $numberofforums[$i] = $i;
         }
 
+        $seprator = array('&raquo' => '&raquo',
+            '&#8211' => '&#8211',
+            '&rarr;' => '&rarr;',
+            '&#58' => '&#58',
+            '&#62;' => '&#62;',
+            '&nbsp;' => '&nbsp;');
+
         $mform->addElement('select', 'config_numberofforums', get_string('numentriestodisplay', 'block_my_unread_forum_posts'), $numberofforums);
-        $mform->setDefault('config_numberofforums', 10);        
-        
+        $mform->setDefault('config_numberofforums', 10);
+
+        $mform->addElement('select', 'config_coursenameseparator', get_string('coursenameseparator', 'block_my_unread_forum_posts'), $seprator);
+        $mform->setDefault('config_coursenameseparator', 0);
+
         $mform->addElement('select', 'config_forumnamelength', get_string('forumnamelength', 'block_my_unread_forum_posts'), $numberofforums);
-        $mform->setDefault('config_forumnamelength', 15);        
-        
+        $mform->setDefault('config_forumnamelength', 15);
     }
+
 }
