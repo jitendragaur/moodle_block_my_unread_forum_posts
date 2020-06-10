@@ -56,6 +56,10 @@ class block_my_unread_forum_posts extends block_base {
             return $this->content;
         }
 
+        if(empty($this->config)){
+            $this->config = new stdClass();
+        }
+
         if (empty($this->config->numberofforums)) {
             $this->config->numberofforums = 10;
         }
@@ -72,7 +76,7 @@ class block_my_unread_forum_posts extends block_base {
         $counter = 0;
 
         foreach ($courses as $course) {
-            //count the unread forum 
+            //count the unread forum
             $forums = forum_tp_get_course_unread_posts($USER->id, $course->id);
             if (!empty($forums)) {
                 foreach ($forums as $forum) {

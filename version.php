@@ -25,7 +25,7 @@
  */
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2013011801;        // The current plugin version (Date: YYYYMMDDXX)
-$plugin->requires = 2010112400;        // Requires this Moodle version
+$plugin->version = 2020061000;        // The current plugin version (Date: YYYYMMDDXX)
+$plugin->requires = 2019111802;        // Requires this Moodle version
 $plugin->component = 'block_my_unread_forum_posts'; // Full name of the plugin (used for diagnostics)
 $plugin->release = '2.x (Build: 2013011801)'; //Human-readable version name
