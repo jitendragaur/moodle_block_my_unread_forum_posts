@@ -78,6 +78,7 @@ class block_my_unread_forum_posts extends block_base {
         foreach ($courses as $course) {
             //count the unread forum
             $forums = forum_tp_get_course_unread_posts($USER->id, $course->id);
+
             if (!empty($forums)) {
                 foreach ($forums as $forum) {
                     if ($cm = get_coursemodule_from_instance('forum', $forum->id, $course->id)) {
@@ -85,9 +86,7 @@ class block_my_unread_forum_posts extends block_base {
                         $viewforumurl = new moodle_url('/mod/forum/view.php', array('id' => $cm->id));
                         $viewcourseurl = new moodle_url('/course/view.php', array('id' => $course->id));
                         $output = '<div style="overflow:hidden;height:auto;"><div>';
-                        $icon = '<img src="' . $OUTPUT->pix_url('icon', 'forum') .
-                                '" class="icon" alt="" />&nbsp;';
-                        $output .= html_writer::link($viewcourseurl, $icon . $course->fullname);
+                        $output .= html_writer::link($viewcourseurl, $OUTPUT->pix_icon('icon','forum', 'forum') . $course->fullname);
                         //add course separator
                         $output .= ' ' . $this->config->coursenameseparator . ' ';
 
